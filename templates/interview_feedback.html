@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Your Interview Feedback</h2>
+        {% for q, a, f in feedbacks %}
+        <div>
+            <p><strong>Q{{ loop.index }}: {{ q }}</strong></p>
+            <p><strong>Your Answer:</strong> {{ a }}</p>
+            <p><strong>Feedback:</strong> {{ f }}</p>
+            <hr>
+        </div>
+        {% endfor %}
+        <p><a href="{{ url_for('results') }}">View My Interview History</a> | <a href="{{ url_for('download_report') }}" target="_blank">Download My Interview Report ⬇️ (PDF)</a> | <a href="{{ url_for('home') }}">Back to Home</a> | <a href="{{ url_for('logout') }}">Logout</a></p>
+    </div>
+</body>
+</html>

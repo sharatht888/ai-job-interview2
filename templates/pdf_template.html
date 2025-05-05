@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Interview Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1, h2 { color: #333; }
+        p strong { font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 8px; border: 1px solid #999; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Interview Summary Report</h1>
+    <p><strong>Resume Score:</strong> {{ resume_score }}%</p>
+    <p><strong>Skills Found:</strong> {{ skills_found }}</p>
+    <h2>Interview Q&A + Feedback</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Answer</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ans, fb in zip(answers, feedback) %}  <tr>
+                <td>{{ ans }}</td>
+                <td>{{ fb }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

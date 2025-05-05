@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Interview Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { width: 80%; margin: 0 auto; }
+        h1, h2 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Previous Interview Attempts</h1>
+        <p><a href="{{ url_for('home') }}">Back to Upload Resume</a> | <a href="{{ url_for('logout') }}">Logout</a></p>
+        
+        {% for attempt in data %}
+        <h2>Attempt {{ loop.index }}</h2>
+        <p><strong>Resume Score:</strong> {{ attempt.resume_score }}%</p>
+        <p><strong>Skills Found:</strong> {{ attempt.skills_found }}</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Answer</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ans, fb in zip(attempt.answers, attempt.feedback) %}
+                <tr>
+                    <td>{{ ans }}</td>
+                    <td>{{ fb }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        {% endfor %}
+    </div>
+</body>
+</html>

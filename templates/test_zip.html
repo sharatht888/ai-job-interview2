@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zip Test</title>
+</head>
+<body>
+    {% for ans, fb in zip(answers, feedback) %}
+        <p>{{ ans }} - {{ fb }}</p>
+    {% endfor %}
+</body>
+</html>

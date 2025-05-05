@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Questions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Interview Simulation</h2>
+        <form action="/submit_answers" method="post">
+            {% for question in questions %}
+            <div>
+                <p><strong>Q{{ loop.index }}:</strong> {{ question }}</p>
+                <textarea name="answer{{ loop.index + 1 }}" rows="4" cols="50" required></textarea>
+            </div>
+            <br>
+            {% endfor %}
+            <button type="submit">Submit Answers</button>
+        </form>
+        <p><a href="{{ url_for('results') }}">View My Interview History</a> | <a href="{{ url_for('logout') }}">Logout</a></p>
+    </div>
+</body>
+</html>
